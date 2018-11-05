@@ -19,16 +19,23 @@ class App extends Component {
   /* Consulted: dynamic key value in setState: https://stackoverflow.com/questions/46016465/get-react-state-with-dynamic-key */ 
   updateShelf = (bookID, currentShelf, newShelf) => {
     let bookToMove = this.state.allBooks.filter(book => book.id === bookID)
-    let stateToRemoveFrom = this.state[currentShelf]
+    console.log(bookToMove)
+    let shelfToMoveFrom = bookToMove[0].shelf
+    console.log(shelfToMoveFrom)
+    // let stateToRemoveFrom = this.state[currentShelf]
+    let stateToRemoveFrom = this.state[shelfToMoveFrom]
     if (newShelf === 'currentlyReading') {
-    this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
-    this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
+      this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
+      bookToMove[0].shelf = 'currentlyReading'
+      this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
     } else if (newShelf === 'wantToRead') {
-      this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
-      this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
+        this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
+        bookToMove[0].shelf = 'wantToRead'
+        this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
     } else if (newShelf === 'read') {
-      this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
-      this.setState({read: this.state.read.concat(bookToMove)})
+        this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
+        bookToMove[0].shelf = 'read'
+        this.setState({read: this.state.read.concat(bookToMove)})
     }
   }
 
@@ -44,13 +51,6 @@ class App extends Component {
       this.setState({read: read})
     })
    
-
-    // Consulted: https://www.w3schools.com/tags/att_select_disabled.asp
-    // Consulted: https://www.w3schools.com/jsref/met_element_removeattribute.asp
-    // selectTags.forEach(function(element) {
-    // element.removeAttribute('disabled');
-    // }
-    
   }
 
 
@@ -77,7 +77,6 @@ class App extends Component {
               searchResults={this.state.searchResults}
               />
           )}
-          // component={Search}
         />
       </div>
     )
