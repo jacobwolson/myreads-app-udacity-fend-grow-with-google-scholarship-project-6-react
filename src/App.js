@@ -17,6 +17,8 @@ class App extends Component {
   /* Consulted: computed property names; https://stackoverflow.com/a/29281499 */
   /* Consulted: use filter to remove; https://stackoverflow.com/questions/29527385/removing-element-from-array-in-component-state */
   /* Consulted: dynamic key value in setState: https://stackoverflow.com/questions/46016465/get-react-state-with-dynamic-key */ 
+  /* Consulted: check if array includes x; https://stackoverflow.com/questions/237104/how-do-i-check-if-an-array-includes-an-object-in-javascript */
+  /* Consulted: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter */
   updateShelf = (bookID, currentShelf, newShelf) => {
     let bookToMove = this.state.allBooks.filter(book => book.id === bookID)
     console.log(bookToMove)
@@ -25,17 +27,26 @@ class App extends Component {
     // let stateToRemoveFrom = this.state[currentShelf]
     let stateToRemoveFrom = this.state[shelfToMoveFrom]
     if (newShelf === 'currentlyReading') {
-      this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
-      bookToMove[0].shelf = 'currentlyReading'
-      this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
+      let checkForExisting = this.state.currentlyReading.filter(book => book.id === bookID)
+      if (checkForExisting.length === 0) {
+        this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
+        bookToMove[0].shelf = 'currentlyReading'
+        this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
+      }
     } else if (newShelf === 'wantToRead') {
+      let checkForExisting = this.state.wantToRead.filter(book => book.id === bookID)
+      if (checkForExisting.length === 0) {
         this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
         bookToMove[0].shelf = 'wantToRead'
         this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
+      }
     } else if (newShelf === 'read') {
+      let checkForExisting = this.state.read.filter(book => book.id === bookID)
+      if (checkForExisting.length === 0) {
         this.setState({ [currentShelf] : stateToRemoveFrom.filter(book => book.id !== bookID) })
         bookToMove[0].shelf = 'read'
         this.setState({read: this.state.read.concat(bookToMove)})
+      }
     }
   }
 
