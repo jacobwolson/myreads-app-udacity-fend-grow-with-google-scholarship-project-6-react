@@ -30,6 +30,8 @@ class Search extends Component {
 
     render () {
     
+        console.log(this.state.searchResults);
+        
         if(this.state.searchResults) {
             this.state.searchResults.sort(sortBy('title'))
         }

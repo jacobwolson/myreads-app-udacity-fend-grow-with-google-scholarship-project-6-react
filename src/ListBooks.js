@@ -6,11 +6,7 @@ class ListBooks extends Component {
     
     render() {
         
-        const { allBooks } = this.props
-
-        let currentlyReading = allBooks.filter(book => book.shelf === "currentlyReading")
-        let wantToRead = allBooks.filter(book => book.shelf === "wantToRead")
-        let read = allBooks.filter(book => book.shelf === "read")
+        const { currentlyReading, wantToRead, read } = this.props
 
         return (
             <div className="list-books">
@@ -32,8 +28,9 @@ class ListBooks extends Component {
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
-                                        <select>
-                                            <option value="move" disabled>Move to...</option>
+                                        {/* Consulted: https://stackoverflow.com/a/41229938 */}
+                                        <select onChange={(e) => this.props.changeShelf(book.id, 'currentlyReading', e.target.value)}>
+                                            <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
                                             <option value="read">Read</option>
@@ -61,8 +58,8 @@ class ListBooks extends Component {
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
-                                        <select>
-                                            <option value="move" disabled>Move to...</option>
+                                        <select onChange={(e) => this.props.changeShelf(book.id, 'wantToRead', e.target.value)}>
+                                            <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
                                             <option value="read">Read</option>
@@ -90,8 +87,8 @@ class ListBooks extends Component {
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
-                                        <select>
-                                            <option value="move" disabled>Move to...</option>
+                                        <select onChange={(e) => this.props.changeShelf(book.id, 'read', e.target.value)}>
+                                            <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
                                             <option value="read">Read</option>

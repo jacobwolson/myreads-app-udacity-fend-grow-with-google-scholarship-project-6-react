@@ -147,3 +147,14 @@ class Search extends Component {
 
 export default Search
 -----------------------------------------------
+
+ListBooks component scraps
+
+   // let currentlyReading = allBooks.filter(book => book.shelf === "currentlyReading")
+        // let wantToRead = allBooks.filter(book => book.shelf === "wantToRead")
+        // let read = allBooks.filter(book => book.shelf === "read")
+
+
+
+
+---------------------------------------------------------------------------
