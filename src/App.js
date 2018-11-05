@@ -7,7 +7,8 @@ import './App.css'
 
 class App extends Component {
   state = {
-    books: []
+    books: [],
+    searchResults: []
   }
   
   placeBook = () => {
@@ -18,17 +19,15 @@ class App extends Component {
     BooksAPI.getAll().then((books) => {
       console.log(books)
       this.setState({books: books})
-      // console.log(this.state.books)
     })
   }
+
 
   render() {
     return(
       <div className="app">
-      {/* {JSON.stringify(this.state.books)} */}
         <Route
           exact path="/"
-          // component={ListBooks}
           render={() => (
             <ListBooks
               allBooks={this.state.books}
@@ -37,7 +36,12 @@ class App extends Component {
         />
         <Route 
           path="/search" 
-          component={Search}
+          render={() => (
+            <Search
+              searchResults={this.state.searchResults}
+              />
+          )}
+          // component={Search}
         />
       </div>
     )

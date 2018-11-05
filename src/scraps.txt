@@ -1,40 +1,73 @@
+Search component scraps:
+
+-----------------------------------
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-// import escapeRegExp from 'escape-string-regexp'
+import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
+
+let searchResults = []
+let query;
 
 class Search extends Component {
 
     state = {
+        // query: '',
         searchResults: []
     }
    
+    // updateQuery = (query) => {
+    //     this.setState({query: query.trim()})
+    //     // console.log(this.state.query)
+    //     // this.updateSearchResults()
+    //     // console.log(this.state.searchResults)
+    // }
+
+    // updateQuery = (newText) => {
+    //     query = newText;
+    //     this.updateSearchResults(query);
+    // }
 
     updateSearchResults = (query) => {
-        if(query.length > 0) {
-            BooksAPI.search(query).then((matches) => {
-                // if (matches === undefined) {
-                //     this.setState({searchResults: ''})
-                 if (matches.error) {
-                    this.setState({searchResults: ''})
-                } else {
-                    this.setState({searchResults: matches})
-                }
-            })
-        } else {
-            this.setState({searchResults: ''})
-        }
+        BooksAPI.search(query).then((matches) => {
+            console.log(matches)
+            if (matches == undefined) {
+                this.setState({searchResults: ''})
+            } else if 
+ (matches.error || matches === undefined) {
+                this.setState({searchResults: ''})
+            } else {
+                this.setState({searchResults: matches})
+            }
+            // this.setState({searchResults: matches})
+            // searchResults = this.state.searchResults;
+            // console.log(searchResults);
+            // } else {
+            //     this.setState({searchResults: ''});
+            // }
+        })
     }
 
 
     render () {
-    
-        if(this.state.searchResults) {
-            this.state.searchResults.sort(sortBy('title'))
+
+        if (this.state.query) {
+            // this.updateSearchResults();
+            // const match = new RegExp(escapeRegExp(this.state.query), 'i')
+            BooksAPI.search(this.state.query).then((matches) => {
+                searchResults = matches;
+                console.log(searchResults);
+            })
+        }
+
+        if(searchResults) {
+            searchResults.sort(sortBy('title'))
         }
 
         return(
+            
             <div className="search-books">
               <div className="search-books-bar">
                 <Link
@@ -53,21 +86,27 @@ class Search extends Component {
                   <input 
                     type="text" 
                     placeholder="Search by title or author"
-                    // value={this.state.searchResults}
+                    value={this.state.updateSearchResults}
                     onChange={(event) => this.updateSearchResults(event.target.value)}
                   />
+  
                 </div>
               </div>
               <div className="search-books-results">
+              {/* <p>{this.state.query}{searchResults[0].title}</p>  */}
+              {/* {JSON.stringify(this.state), console.log(searchResults)} */}
                 <ol className="books-grid">
+                  
                   <div className="bookshelf">
                       <h2 className="bookshelf-title">Search Results</h2>
                       <div className="bookshelf-books">
                       {this.state.searchResults.length !== 0 && (
-                          // Consulted: StackOverflow answer by nem035; https://stackoverflow.com/questions/44849206/react-js-syntax-error-this-is-a-reserved-word-in-render-function
-                          <ol className="books-grid">   
+                          <ol className="books-grid">
+                            
+                            
+                                
                                 {this.state.searchResults.map((book) => (
-                                  <li key={book.id} className="search-result-list-item">
+                                  <li key={book.title} className="search-result-list-item">
                                       <div className="book">
                                       <div className="book-top">
                                             {book.imageLinks !== undefined && ( 
@@ -90,13 +129,16 @@ class Search extends Component {
                                         </div>
                                   </li>
                                   )
-                                )}      
+                                )}
+                                
+                            
                           </ol>
                         )}
                       </div>
                   </div>
                 </ol>
               </div>
+            
             </div>
         )
     }
@@ -104,3 +146,4 @@ class Search extends Component {
 }
 
 export default Search
+-----------------------------------------------
