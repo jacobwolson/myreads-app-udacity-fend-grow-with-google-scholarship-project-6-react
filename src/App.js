@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ListBooks from './ListBooks'
 import Search from './Search'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -20,57 +20,61 @@ class App extends Component {
     }
   }
 
-  /* Consulted: https://stackoverflow.com/a/37435764 */
-  /* Consulted: computed property names; https://stackoverflow.com/a/29281499 */
-  /* Consulted: use filter to remove; https://stackoverflow.com/questions/29527385/removing-element-from-array-in-component-state */
-  /* Consulted: dynamic key value in setState: https://stackoverflow.com/questions/46016465/get-react-state-with-dynamic-key */ 
-  /* Consulted: check if array includes x; https://stackoverflow.com/questions/237104/how-do-i-check-if-an-array-includes-an-object-in-javascript */
-  /* Consulted: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter */
+  /* Consulted for writing updateShelf method:
+     - pushing new data on to state array: answer by Ginden; https://stackoverflow.com/a/37435764
+     - using computed property names when setting state: answer by trad; https://stackoverflow.com/a/29281499 
+     - using filter to remove data from state array: 
+          answer by ephrion; https://stackoverflow.com/a/31838774,
+          entry 'Array.prototype.filter' at MDN; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+     - using dynamic key value when setting state: answer by Aaron; https://stackoverflow.com/a/46016573
+     - checking if array includes certain object: answer by AlonL; https://stackoverflow.com/a/27819913 */
   updateShelf = (bookID, newShelf) => {
     let bookToMove = this.state.allBooks.filter(book => book.id === bookID)
     let shelfToMoveFrom;
     let stateToRemoveFrom;
 
-    {bookToMove[0].shelf !== undefined && (shelfToMoveFrom = bookToMove[0].shelf)}
+    if (bookToMove[0].shelf !== undefined) {
+      shelfToMoveFrom = bookToMove[0].shelf
+    }
 
     stateToRemoveFrom = this.state[shelfToMoveFrom]
 
     if (newShelf === 'currentlyReading') {
       let checkForExisting = this.state.currentlyReading.filter(book => book.id === bookID)
       if (checkForExisting.length === 0) {
-        {shelfToMoveFrom !== undefined && 
-          (this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)}))
+        if (shelfToMoveFrom !== undefined) {
+          this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
         }
         bookToMove[0].shelf = 'currentlyReading'
         this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
       }
     } else if (newShelf === 'wantToRead') {
-      let checkForExisting = this.state.wantToRead.filter(book => book.id === bookID)
-      if (checkForExisting.length === 0) {
-        {shelfToMoveFrom !== undefined && 
-          (this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)}))
+        let checkForExisting = this.state.wantToRead.filter(book => book.id === bookID)
+        if (checkForExisting.length === 0) {
+          if (shelfToMoveFrom !== undefined) {
+            this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+          }
+          bookToMove[0].shelf = 'wantToRead'
+          this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
         }
-        bookToMove[0].shelf = 'wantToRead'
-        this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
-      }
     } else if (newShelf === 'read') {
-      let checkForExisting = this.state.read.filter(book => book.id === bookID)
-      if (checkForExisting.length === 0) {
-        {shelfToMoveFrom !== undefined && 
-          (this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)}))
+        let checkForExisting = this.state.read.filter(book => book.id === bookID)
+        if (checkForExisting.length === 0) {
+          if (shelfToMoveFrom !== undefined) {
+            this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+          }
+          bookToMove[0].shelf = 'read'
+          this.setState({read: this.state.read.concat(bookToMove)})
         }
-        bookToMove[0].shelf = 'read'
-        this.setState({read: this.state.read.concat(bookToMove)})
-      }
     } else if (newShelf === 'none') {
-      let checkForExisting = this.state.allBooks.filter(book => book.id === bookID)
-      {shelfToMoveFrom !== undefined && 
-        (this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)}))
-      }
-      bookToMove[0].shelf = 'none'
-      if (checkForExisting.length === 0) {
-        this.setState({allBooks: this.state.allBooks.concat(bookToMove)})
-      }  
+        let checkForExisting = this.state.allBooks.filter(book => book.id === bookID)
+        if (shelfToMoveFrom !== undefined) {
+          this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+        }
+        bookToMove[0].shelf = 'none'
+        if (checkForExisting.length === 0) {
+          this.setState({allBooks: this.state.allBooks.concat(bookToMove)})
+        }  
     }
   }
 
@@ -85,7 +89,6 @@ class App extends Component {
       this.setState({read})
     }) 
   }
-
 
   render() {
     return(
@@ -110,6 +113,7 @@ class App extends Component {
               searchResults={this.state.searchResults}
               addToAllBooks={this.addToAllBooks}
               updateShelf={this.updateShelf}
+              {/* Consulted: "Programmatically navigate with React Router" by Tyler McGinnis: https://tylermcginnis.com/react-router-programmatically-navigate/ */}
               navigateToHome={() => {history.push('/')}}
               />
           )}
