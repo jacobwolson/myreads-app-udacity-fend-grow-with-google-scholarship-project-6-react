@@ -158,3 +158,17 @@ ListBooks component scraps
 
 
 ---------------------------------------------------------------------------
+
+App component scraps
+
+    
+    // let stateToRemoveFrom = this.state[currentShelf]
+
+    let selectTags = Array.from(document.getElementsByTagName('select'));
+function enableSelect () {
+  selectTags.forEach(function(element) {
+      element.removeAttribute('disabled')
+    })
+  }
+
+  window.addEventListener('load', enableSelect())

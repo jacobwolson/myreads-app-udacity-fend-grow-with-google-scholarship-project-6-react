@@ -23,13 +23,13 @@ class ListBooks extends Component {
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             {currentlyReading.map((book) => (
-                                <li key={book.title} className="all-books-list-item">
+                                <li key={book.title} className="currently-reading-list-item">
                                     <div className="book">
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
                                         {/* Consulted: https://stackoverflow.com/a/41229938 */}
-                                        <select onChange={(e) => this.props.changeShelf(book.id, 'currentlyReading', e.target.value)}>
+                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
@@ -53,12 +53,12 @@ class ListBooks extends Component {
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             {wantToRead.map((book) => (
-                                <li key={book.title} className="all-books-list-item">
+                                <li key={book.title} className="want-to-read-list-item">
                                     <div className="book">
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
-                                        <select onChange={(e) => this.props.changeShelf(book.id, 'wantToRead', e.target.value)}>
+                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
@@ -82,12 +82,12 @@ class ListBooks extends Component {
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             {read.map((book) => (
-                                <li key={book.title} className="all-books-list-item">
+                                <li key={book.title} className="have-read-list-item">
                                     <div className="book">
                                     <div className="book-top">
                                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
                                         <div className="book-shelf-changer">
-                                        <select onChange={(e) => this.props.changeShelf(book.id, 'read', e.target.value)}>
+                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>

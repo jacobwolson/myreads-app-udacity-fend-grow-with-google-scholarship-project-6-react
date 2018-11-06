@@ -27,10 +27,17 @@ class Search extends Component {
         }
     }
 
+    reconcileShelfAssignment = (thisBook) => {
+        let bookHasShelf;
+        bookHasShelf = this.props.allBooks.filter(eachBook => eachBook.id === thisBook.id)
+        if (bookHasShelf[0] === undefined) {
+            return "move"
+        } else {
+            return bookHasShelf[0].shelf
+        }
+    }
 
-    render () {
-    
-        console.log(this.state.searchResults);
+      render () {
         
         if(this.state.searchResults) {
             this.state.searchResults.sort(sortBy('title'))
@@ -72,12 +79,18 @@ class Search extends Component {
                                   <li key={book.id} className="search-result-list-item">
                                       <div className="book">
                                       <div className="book-top">
-                                            {book.imageLinks !== undefined && ( 
-                                          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
-                                            )}
-                                          <div className="book-shelf-changer">
-                                          <select>
-                                              <option value="move" disabled>Move to...</option>
+                                          {book.imageLinks !== undefined && ( 
+                                                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+                                          )}
+                                          <div className="book-shelf-changer" 
+                                            onClick={() => this.props.addToAllBooks(book.id, book)} 
+                                            onChange={e => {
+                                              this.props.updateShelf(book.id, e.target.value);
+                                              this.props.navigateToHome()
+                                            }}
+                                          >
+                                          <select defaultValue={this.reconcileShelfAssignment(book)}>
+                                              <option value="move">Move to...</option>
                                               <option value="currentlyReading">Currently Reading</option>
                                               <option value="wantToRead">Want to Read</option>
                                               <option value="read">Read</option>
