@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import sortBy from 'sort-by'
 
-let allBooksNow;
-
 class Search extends Component {
 
     state = {
@@ -17,7 +15,6 @@ class Search extends Component {
                  if (matches.error) {
                     const noResults = {title: 'No Results', id: 'no-results'}
                     this.setState({searchResults: [noResults]})
-                    console.log(this.state.searchResults)
                 } else {
                     this.setState({searchResults: matches})
                 }
@@ -29,7 +26,7 @@ class Search extends Component {
 
     reconcileShelfAssignment = (thisBook) => {
         let bookHasShelf;
-        bookHasShelf = this.props.allBooks.filter(eachBook => eachBook.id === thisBook.id)
+        bookHasShelf = this.props.allBooksInPlay.filter(eachBook => eachBook.id === thisBook.id)
         if (bookHasShelf[0] === undefined) {
             return "none"
         } else {
@@ -38,14 +35,7 @@ class Search extends Component {
     }
 
     render () {
-
-        console.log(this.state.searchResults)
-        
-        BooksAPI.getAll().then((books) => {
-            allBooksNow = books
-        })
-        console.log(allBooksNow)
-        
+    
         if(this.state.searchResults > 1) {
             this.state.searchResults.sort(sortBy('title'))
         }
@@ -97,7 +87,7 @@ class Search extends Component {
                                         {book.id !== 'no-results' && (
                                         <div 
                                             className="book-shelf-changer" 
-                                            onClick={() => this.props.addToAllBooks(book.id, book)} 
+                                            onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
                                             onChange={e => {
                                                 this.props.updateShelf(book.id, e.target.value, book);
                                                 this.props.navigateToHome()

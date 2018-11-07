@@ -7,16 +7,16 @@ import './App.css'
 
 class App extends Component {
   state = {
-    allBooks: [],
+    allBooksInPlay: [],
     currentlyReading: [],
     wantToRead: [],
     read: []
   }
   
-  addToAllBooks = (thisBookID, thisBook) => {
-    let checkForExisting = this.state.allBooks.filter(eachBook => eachBook.id === thisBookID)
+  addToallBooksInPlay = (thisBookID, thisBook) => {
+    let checkForExisting = this.state.allBooksInPlay.filter(eachBook => eachBook.id === thisBookID)
     if (checkForExisting.length === 0) {
-      this.setState({allBooks: this.state.allBooks.concat(thisBook)})
+      this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(thisBook)})
     }
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
      - using dynamic key value when setting state: answer by Aaron; https://stackoverflow.com/a/46016573
      - checking if array includes certain object: answer by AlonL; https://stackoverflow.com/a/27819913 */
   updateShelf = (bookID, newShelf, book) => {
-    let bookToMove = this.state.allBooks.filter(book => book.id === bookID)
+    let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
     let shelfToMoveFrom;
     let stateToRemoveFrom;
 
@@ -68,13 +68,13 @@ class App extends Component {
           this.setState({read: this.state.read.concat(bookToMove)})
         }
     } else if (newShelf === 'none') {
-        let checkForExisting = this.state.allBooks.filter(book => book.id === bookID)
+        let checkForExisting = this.state.allBooksInPlay.filter(book => book.id === bookID)
         if (shelfToMoveFrom !== undefined) {
           this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
         }
         bookToMove[0].shelf = 'none'
         if (checkForExisting.length === 0) {
-          this.setState({allBooks: this.state.allBooks.concat(bookToMove)})
+          this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(bookToMove)})
         }  
     }
 
@@ -86,7 +86,7 @@ class App extends Component {
       let currentlyReading = books.filter(book => book.shelf === "currentlyReading")
       let wantToRead = books.filter(book => book.shelf === "wantToRead")
       let read = books.filter(book => book.shelf === "read")
-      this.setState({allBooks: books})
+      this.setState({allBooksInPlay: books})
       this.setState({currentlyReading})
       this.setState({wantToRead})
       this.setState({read})
@@ -94,14 +94,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.allBooks)
     return(
       <div className="app">
         <Route
           exact path="/"
           render={() => (
             <ListBooks
-              allBooks={this.state.books}
+              allBooksInPlay={this.state.books}
               currentlyReading={this.state.currentlyReading}
               wantToRead={this.state.wantToRead}
               read={this.state.read}
@@ -113,9 +112,9 @@ class App extends Component {
           path="/search" 
           render={( {history} ) => (
             <Search
-              allBooks={this.state.allBooks}
+              allBooksInPlay={this.state.allBooksInPlay}
               searchResults={this.state.searchResults}
-              addToAllBooks={this.addToAllBooks}
+              addToallBooksInPlay={this.addToallBooksInPlay}
               updateShelf={this.updateShelf}
               /* Consulted: "Programmatically navigate with React Router" by Tyler McGinnis: 
                 https://tylermcginnis.com/react-router-programmatically-navigate/ */
