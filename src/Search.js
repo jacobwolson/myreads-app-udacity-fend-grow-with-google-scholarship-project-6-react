@@ -13,7 +13,7 @@ class Search extends Component {
         if(query.length > 0) {
             BooksAPI.search(query).then((matches) => {
                  if (matches.error) {
-                    const noResults = {title: 'No Results', id: 'no-results'}
+                    const noResults = {title: 'Sorry, no results.', id: 0}
                     this.setState({searchResults: [noResults]})
                 } else {
                     this.setState({searchResults: matches})
@@ -84,7 +84,7 @@ class Search extends Component {
                                                 style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
                                             </div>
                                         )}
-                                        {book.id !== 'no-results' && (
+                                        {book.id !== 0 && (
                                         <div 
                                             className="book-shelf-changer" 
                                             onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
@@ -102,9 +102,13 @@ class Search extends Component {
                                         </div>
                                         )}
                                     </div>
+                                    {book.id === 0 ? (
+                                    <div className="book-title" id="no-results">{book.title}</div>
+                                    ) : ( 
                                     <div className="book-title">{book.title}</div>
+                                    )}
                                     {book.authors !== undefined && (
-                                        <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
+                                    <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
                                     )}
                                     </div>
                                 </li>

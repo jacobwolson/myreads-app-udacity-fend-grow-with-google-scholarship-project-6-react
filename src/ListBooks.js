@@ -27,8 +27,11 @@ class ListBooks extends Component {
                                     <div className="book">
                                     <div className="book-top">
                                         {book.imageLinks !== undefined && ( 
-                                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
-                                        )}
+                                            <div 
+                                                className="book-cover" 
+                                                style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
+                                            </div>
+                                        )}  
                                         <div className="book-shelf-changer">
                                         {/* Consulted: setting state based on changed value of select tag: answer by jmac; 
                                             https://stackoverflow.com/a/41229938 */}
@@ -42,7 +45,9 @@ class ListBooks extends Component {
                                         </div>
                                     </div>
                                     <div className="book-title">{book.title}</div>
-                                    <div className="book-authors">{book.authors.map(author => <span key={author}>{author} </span>)}</div>
+                                    {book.authors !== undefined && (
+                                        <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
+                                    )}
                                     </div>
                                 </li>
                                 )
@@ -60,7 +65,10 @@ class ListBooks extends Component {
                                     <div className="book">
                                     <div className="book-top">
                                         {book.imageLinks !== undefined && ( 
-                                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+                                            <div 
+                                                className="book-cover" 
+                                                style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
+                                            </div>
                                         )}
                                         <div className="book-shelf-changer">
                                         <select onChange={(e) => this.props.changeShelf(book.id, e.target.value, book)}>
@@ -73,7 +81,9 @@ class ListBooks extends Component {
                                         </div>
                                     </div>
                                     <div className="book-title">{book.title}</div>
-                                    <div className="book-authors">{book.authors.map(author => <span key={author}>{author} </span>)}</div>
+                                    {book.authors !== undefined && (
+                                        <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
+                                    )}
                                     </div>
                                 </li>
                                 )
@@ -91,7 +101,10 @@ class ListBooks extends Component {
                                     <div className="book">
                                     <div className="book-top">
                                         {book.imageLinks !== undefined && ( 
-                                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}></div>
+                                            <div 
+                                                className="book-cover" 
+                                                style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
+                                            </div>
                                         )}
                                         <div className="book-shelf-changer">
                                         <select onChange={(e) => this.props.changeShelf(book.id, e.target.value, book)}>
@@ -104,7 +117,9 @@ class ListBooks extends Component {
                                         </div>
                                     </div>
                                     <div className="book-title">{book.title}</div>
-                                    <div className="book-authors">{book.authors.map(author => <span key={author}>{author} </span>)}</div>
+                                    {book.authors !== undefined && (
+                                        <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
+                                    )}
                                     </div>
                                 </li>
                                 )

@@ -103,6 +103,11 @@ body, .app {
   padding: 80px 10px 20px;
 }
 
+#no-results {
+  font-size: 1.15em;
+  color: #fd6a02;
+}
+
 /* books grid */
 
 .books-grid {

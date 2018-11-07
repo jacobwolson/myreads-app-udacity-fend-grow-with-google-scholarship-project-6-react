@@ -78,6 +78,8 @@ class App extends Component {
         }  
     }
 
+    /* Update API with newly shelved book so that if we refresh and make new `BooksAPI.getAll()` call, 
+    app will still be in same state */
     BooksAPI.update(book, newShelf)
   }
 
