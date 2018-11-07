@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import sortBy from 'sort-by'
 
+let allBooksNow;
+
 class Search extends Component {
 
     state = {
@@ -13,7 +15,9 @@ class Search extends Component {
         if(query.length > 0) {
             BooksAPI.search(query).then((matches) => {
                  if (matches.error) {
-                    this.setState({searchResults: ''})
+                    const noResults = {title: 'No Results', id: 'no-results'}
+                    this.setState({searchResults: [noResults]})
+                    console.log(this.state.searchResults)
                 } else {
                     this.setState({searchResults: matches})
                 }
@@ -27,15 +31,22 @@ class Search extends Component {
         let bookHasShelf;
         bookHasShelf = this.props.allBooks.filter(eachBook => eachBook.id === thisBook.id)
         if (bookHasShelf[0] === undefined) {
-            return "move"
+            return "none"
         } else {
             return bookHasShelf[0].shelf
         }
     }
 
     render () {
+
+        console.log(this.state.searchResults)
         
-        if(this.state.searchResults) {
+        BooksAPI.getAll().then((books) => {
+            allBooksNow = books
+        })
+        console.log(allBooksNow)
+        
+        if(this.state.searchResults > 1) {
             this.state.searchResults.sort(sortBy('title'))
         }
 
@@ -83,11 +94,12 @@ class Search extends Component {
                                                 style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
                                             </div>
                                         )}
+                                        {book.id !== 'no-results' && (
                                         <div 
                                             className="book-shelf-changer" 
                                             onClick={() => this.props.addToAllBooks(book.id, book)} 
                                             onChange={e => {
-                                                this.props.updateShelf(book.id, e.target.value);
+                                                this.props.updateShelf(book.id, e.target.value, book);
                                                 this.props.navigateToHome()
                                             }}>
                                             <select defaultValue={this.reconcileShelfAssignment(book)}>
@@ -98,6 +110,7 @@ class Search extends Component {
                                                 <option value="none">None</option>
                                             </select>
                                         </div>
+                                        )}
                                     </div>
                                     <div className="book-title">{book.title}</div>
                                     {book.authors !== undefined && (

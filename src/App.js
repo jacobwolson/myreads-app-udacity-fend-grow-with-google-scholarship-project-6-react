@@ -25,10 +25,11 @@ class App extends Component {
      - using computed property names when setting state: answer by trad; https://stackoverflow.com/a/29281499 
      - using filter to remove data from state array: 
           answer by ephrion; https://stackoverflow.com/a/31838774,
-          entry 'Array.prototype.filter' at MDN; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+          entry 'Array.prototype.filter' at MDN; 
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
      - using dynamic key value when setting state: answer by Aaron; https://stackoverflow.com/a/46016573
      - checking if array includes certain object: answer by AlonL; https://stackoverflow.com/a/27819913 */
-  updateShelf = (bookID, newShelf) => {
+  updateShelf = (bookID, newShelf, book) => {
     let bookToMove = this.state.allBooks.filter(book => book.id === bookID)
     let shelfToMoveFrom;
     let stateToRemoveFrom;
@@ -76,6 +77,8 @@ class App extends Component {
           this.setState({allBooks: this.state.allBooks.concat(bookToMove)})
         }  
     }
+
+    BooksAPI.update(book, newShelf)
   }
 
   componentDidMount() {
@@ -91,6 +94,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.allBooks)
     return(
       <div className="app">
         <Route
@@ -113,7 +117,8 @@ class App extends Component {
               searchResults={this.state.searchResults}
               addToAllBooks={this.addToAllBooks}
               updateShelf={this.updateShelf}
-              {/* Consulted: "Programmatically navigate with React Router" by Tyler McGinnis: https://tylermcginnis.com/react-router-programmatically-navigate/ */}
+              /* Consulted: "Programmatically navigate with React Router" by Tyler McGinnis: 
+                https://tylermcginnis.com/react-router-programmatically-navigate/ */
               navigateToHome={() => {history.push('/')}}
               />
           )}
