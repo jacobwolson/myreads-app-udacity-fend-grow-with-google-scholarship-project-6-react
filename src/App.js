@@ -10,10 +10,10 @@ class App extends Component {
     allBooksInPlay: []
   }
   
-  addToallBooksInPlay = (thisBookID, thisBook) => {
-    let checkForExisting = this.state.allBooksInPlay.filter(eachBook => eachBook.id === thisBookID)
+  addToallBooksInPlay = (book) => {
+    let checkForExisting = this.state.allBooksInPlay.filter(eachBook => eachBook.id === book.id)
     if (checkForExisting.length === 0) {
-      this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(thisBook)})
+      this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(book)})
     }
   }
 
