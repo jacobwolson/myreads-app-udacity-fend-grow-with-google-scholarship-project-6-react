@@ -9,17 +9,16 @@ class App extends Component {
   state = {
     allBooksInPlay: []
   }
-  
-  addToallBooksInPlay = (book) => {
-      this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(book)})
-  }
 
-  /* Consulted for writing updateShelf method:
-    */
   updateShelf = (newShelf, book) => {
-    const updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(eachBook => eachBook.id === book.id ? eachBook = book : eachBook)
-    // Update value of the shelf property on, or add a shelf property and concomitant value to, the selected book.
     book.shelf = newShelf
+    let updatedAllBooksInPlayArray
+    if (this.state.allBooksInPlay.filter(eachBook => eachBook.id === book.id).length !== 0) {
+      // Ternary usage here inspired by answer by S.Kiers; https://stackoverflow.com/a/42259885
+      updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(eachBook => eachBook.id === book.id ? eachBook = book : eachBook)
+    } else {
+      updatedAllBooksInPlayArray = this.state.allBooksInPlay.concat(book)
+    }
     // Set state with updated book object.
     this.setState({allBooksInPlay: updatedAllBooksInPlayArray})
     // Update our API with new data so state is retained when we refresh page or otherwise make a BooksAPI.update() call.
