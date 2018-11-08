@@ -25,7 +25,7 @@ class Search extends Component {
     }
 
     reconcileShelfAssignment = (thisBook) => {
-        let bookHasShelf;
+        let bookHasShelf
         bookHasShelf = this.props.allBooksInPlay.filter(eachBook => eachBook.id === thisBook.id)
         if (bookHasShelf[0] === undefined) {
             return "none"
@@ -87,7 +87,7 @@ class Search extends Component {
                                         {book.id !== 0 && (
                                             <div 
                                                 className="book-shelf-changer" 
-                                                onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
+                                                onClick={() => this.props.addToallBooksInPlay(book.id, book)}
                                                 onChange={e => {
                                                     this.props.updateShelf(e.target.value, book);
                                                     this.props.navigateToHome()

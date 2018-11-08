@@ -6,7 +6,7 @@ class ListBooks extends Component {
     
     render() {
         
-        const { allBooksInPlay, currentlyReading, wantToRead, read } = this.props
+        const { allBooksInPlay } = this.props
 
         return (
             <div className="list-books">
@@ -93,11 +93,11 @@ class ListBooks extends Component {
                 </div>
 
                 <div className="bookshelf">
-                    <h2 className="bookshelf-title">Have Read</h2>
+                    <h2 className="bookshelf-title">Read</h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
-                            {allBooksInPlay.filter(book => book.shelf === 'currentlyReading').map((book) => (
-                                <li key={book.title} className="have-read-list-item">
+                            {allBooksInPlay.filter(book => book.shelf === 'read').map((book) => (
+                                <li key={book.title} className="read-list-item">
                                     <div className="book">
                                     <div className="book-top">
                                         {book.imageLinks !== undefined && ( 

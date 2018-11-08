@@ -265,4 +265,9 @@ currentlyReading={this.state.currentlyReading}
               let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
 
 
+// Function to pass to `findIndex`
+const findBookToMove = eachBook => eachBook.id === book.id
+const indexOfBookToMove = this.state.allBooksInPlay.findIndex(findBookToMove)
+
+
 
