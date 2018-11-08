@@ -71,8 +71,8 @@ class Search extends Component {
                         <h2 className="bookshelf-title">Search Results</h2>
                         <div className="bookshelf-books">
                         {this.state.searchResults.length !== 0 && (
-                          /* Consulted: wrapping function call in JSX element to avoid expectation of object literal: answer by 
-                            nem035; https://stackoverflow.com/a/44849764 */
+                            /* Consulted: wrapping function call in JSX element to avoid expectation of object literal: answer by 
+                                nem035; https://stackoverflow.com/a/44849764 */
                             <ol className="books-grid">   
                             {this.state.searchResults.map((book) => (
                                 <li key={book.id} className="search-result-list-item">
@@ -87,9 +87,14 @@ class Search extends Component {
                                         {book.id !== 0 && (
                                             <div 
                                                 className="book-shelf-changer" 
-                                                onClick={() => this.props.addToallBooksInPlay(book)}
+                                                /* Technique for conditionally adding attribute from answer by Arman Yeghiazaryan; 
+                                                    https://stackoverflow.com/a/35428331 */
+                                                {...(this.props.allBooksInPlay.filter(eachBook => eachBook.id === book.id).length === 0 ? 
+                                                    { onClick: () => this.props.addToallBooksInPlay(book) } : 
+                                                    {})
+                                                }
                                                 onChange={e => {
-                                                    this.props.updateShelf(e.target.value, book);
+                                                    this.props.updateShelf(e.target.value, book)
                                                     this.props.navigateToHome()
                                                 }}>
                                                 <select defaultValue={this.reconcileShelfAssignment(book)}>

@@ -11,10 +11,7 @@ class App extends Component {
   }
   
   addToallBooksInPlay = (book) => {
-    let checkForExisting = this.state.allBooksInPlay.filter(eachBook => eachBook.id === book.id)
-    if (checkForExisting.length === 0) {
       this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(book)})
-    }
   }
 
   /* Consulted for writing updateShelf method:
@@ -25,6 +22,7 @@ class App extends Component {
     book.shelf = newShelf
     // Set state with updated book object.
     this.setState({allBooksInPlay: updatedAllBooksInPlayArray})
+    // Update our API with new data so state is retained when we refresh page or otherwise make a BooksAPI.update() call.
     BooksAPI.update(book, newShelf)
   }
 
