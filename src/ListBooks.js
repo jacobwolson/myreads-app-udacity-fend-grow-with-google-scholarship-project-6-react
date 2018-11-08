@@ -35,7 +35,7 @@ class ListBooks extends Component {
                                         <div className="book-shelf-changer">
                                         {/* Consulted: setting state based on changed value of select tag: answer by jmac; 
                                             https://stackoverflow.com/a/41229938 */}
-                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value, book)}>
+                                        <select onChange={(e) => this.props.changeShelf(e.target.value, book)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
@@ -71,7 +71,7 @@ class ListBooks extends Component {
                                             </div>
                                         )}
                                         <div className="book-shelf-changer">
-                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value, book)}>
+                                        <select onChange={(e) => this.props.changeShelf(e.target.value, book)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>
@@ -107,7 +107,7 @@ class ListBooks extends Component {
                                             </div>
                                         )}
                                         <div className="book-shelf-changer">
-                                        <select onChange={(e) => this.props.changeShelf(book.id, e.target.value, book)}>
+                                        <select onChange={(e) => this.props.changeShelf(e.target.value, book)}>
                                             <option value="move">Move to...</option>
                                             <option value="currentlyReading">Currently Reading</option>
                                             <option value="wantToRead">Want to Read</option>

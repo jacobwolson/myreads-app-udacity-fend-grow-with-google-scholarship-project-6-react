@@ -89,7 +89,7 @@ class Search extends Component {
                                                 className="book-shelf-changer" 
                                                 onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
                                                 onChange={e => {
-                                                    this.props.updateShelf(book.id, e.target.value, book);
+                                                    this.props.updateShelf(e.target.value, book);
                                                     this.props.navigateToHome()
                                                 }}>
                                                 <select defaultValue={this.reconcileShelfAssignment(book)}>

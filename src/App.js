@@ -19,13 +19,12 @@ class App extends Component {
 
   /* Consulted for writing updateShelf method:
     */
-  updateShelf = (bookID, newShelf, book) => {
+  updateShelf = (newShelf, book) => {
     /* If book in question is already in `allBooksInPlay` state array then book in question will already
     have a shelf property set and will display in both the listBooks component and in search results. In 
     this case, run the `if` statemtent. Otherwise, if book in question does not have an existing shelf property, 
     which means it will only currently be displaying as a search result, run the else statement. */
     if (this.state.allBooksInPlay.filter(saidBook => saidBook.id === book.id) !== 0) { 
-      let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
       const findBookToMove = saidBook => saidBook.id === book.id
       const indexOfBookToMove = this.state.allBooksInPlay.findIndex(findBookToMove)
       const updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(saidBook => saidBook.id === book.id ? saidBook = book : saidBook = saidBook)
