@@ -7,10 +7,7 @@ import './App.css'
 
 class App extends Component {
   state = {
-    allBooksInPlay: [],
-    currentlyReading: [],
-    wantToRead: [],
-    read: []
+    allBooksInPlay: []
   }
   
   addToallBooksInPlay = (thisBookID, thisBook) => {
@@ -21,63 +18,26 @@ class App extends Component {
   }
 
   /* Consulted for writing updateShelf method:
-     - pushing new data on to state array: answer by Ginden; https://stackoverflow.com/a/37435764
-     - using computed property names when setting state: answer by trad; https://stackoverflow.com/a/29281499 
-     - using filter to remove data from state array: 
-          answer by ephrion; https://stackoverflow.com/a/31838774,
-          entry 'Array.prototype.filter' at MDN; 
-            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-     - using dynamic key value when setting state: answer by Aaron; https://stackoverflow.com/a/46016573
-     - checking if array includes certain object: answer by AlonL; https://stackoverflow.com/a/27819913 */
+    */
   updateShelf = (bookID, newShelf, book) => {
-    let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
-    let shelfToMoveFrom;
-    let stateToRemoveFrom;
-
-    if (bookToMove[0].shelf !== undefined) {
-      shelfToMoveFrom = bookToMove[0].shelf
+    /* If book in question is already in `allBooksInPlay` state array then book in question will already
+    have a shelf property set and will display in both the listBooks component and in search results. In 
+    this case, run the `if` statemtent. Otherwise, if book in question does not have an existing shelf property, 
+    which means it will only currently be displaying as a search result, run the else statement. */
+    if (this.state.allBooksInPlay.filter(saidBook => saidBook.id === book.id) !== 0) { 
+      let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
+      const findBookToMove = saidBook => saidBook.id === book.id
+      const indexOfBookToMove = this.state.allBooksInPlay.findIndex(findBookToMove)
+      const updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(saidBook => saidBook.id === book.id ? saidBook = book : saidBook = saidBook)
+      
+      // Update the shelf property on the selected book
+      book.shelf = newShelf
+      
+      this.setState({allBooksInPlay: updatedAllBooksInPlayArray})
+    } else {
+      this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(book)})
     }
-
-    stateToRemoveFrom = this.state[shelfToMoveFrom]
-
-    if (newShelf === 'currentlyReading') {
-      let checkForExisting = this.state.currentlyReading.filter(book => book.id === bookID)
-      if (checkForExisting.length === 0) {
-        if (shelfToMoveFrom !== undefined) {
-          this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
-        }
-        bookToMove[0].shelf = 'currentlyReading'
-        this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
-      }
-    } else if (newShelf === 'wantToRead') {
-        let checkForExisting = this.state.wantToRead.filter(book => book.id === bookID)
-        if (checkForExisting.length === 0) {
-          if (shelfToMoveFrom !== undefined) {
-            this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
-          }
-          bookToMove[0].shelf = 'wantToRead'
-          this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
-        }
-    } else if (newShelf === 'read') {
-        let checkForExisting = this.state.read.filter(book => book.id === bookID)
-        if (checkForExisting.length === 0) {
-          if (shelfToMoveFrom !== undefined) {
-            this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
-          }
-          bookToMove[0].shelf = 'read'
-          this.setState({read: this.state.read.concat(bookToMove)})
-        }
-    } else if (newShelf === 'none') {
-        let checkForExisting = this.state.allBooksInPlay.filter(book => book.id === bookID)
-        if (shelfToMoveFrom !== undefined) {
-          this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
-        }
-        bookToMove[0].shelf = 'none'
-        if (checkForExisting.length === 0) {
-          this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(bookToMove)})
-        }  
-    }
-
+    
     /* Update API with newly shelved book so that if we refresh and make new `BooksAPI.getAll()` call, 
     app will still be in same state */
     BooksAPI.update(book, newShelf)
@@ -85,13 +45,7 @@ class App extends Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      let currentlyReading = books.filter(book => book.shelf === "currentlyReading")
-      let wantToRead = books.filter(book => book.shelf === "wantToRead")
-      let read = books.filter(book => book.shelf === "read")
       this.setState({allBooksInPlay: books})
-      this.setState({currentlyReading})
-      this.setState({wantToRead})
-      this.setState({read})
     }) 
   }
 
@@ -102,10 +56,7 @@ class App extends Component {
           exact path="/"
           render={() => (
             <ListBooks
-              allBooksInPlay={this.state.books}
-              currentlyReading={this.state.currentlyReading}
-              wantToRead={this.state.wantToRead}
-              read={this.state.read}
+              allBooksInPlay={this.state.allBooksInPlay}
               changeShelf={this.updateShelf}
             />
           )}

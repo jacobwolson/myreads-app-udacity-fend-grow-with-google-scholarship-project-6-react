@@ -10,7 +10,7 @@ class Search extends Component {
     }
    
     updateSearchResults = (query) => {
-        if(query.length > 0) {
+        if (query.length > 0) {
             BooksAPI.search(query).then((matches) => {
                  if (matches.error) {
                     const noResults = {title: 'Sorry, no results.', id: 0}
@@ -36,11 +36,11 @@ class Search extends Component {
 
     render () {
     
-        if(this.state.searchResults > 1) {
+        if (this.state.searchResults > 1) {
             this.state.searchResults.sort(sortBy('title'))
         }
 
-        return(
+        return (
             <div className="search-books">
 
                 <div className="search-books-bar">
@@ -85,30 +85,30 @@ class Search extends Component {
                                             </div>
                                         )}
                                         {book.id !== 0 && (
-                                        <div 
-                                            className="book-shelf-changer" 
-                                            onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
-                                            onChange={e => {
-                                                this.props.updateShelf(book.id, e.target.value, book);
-                                                this.props.navigateToHome()
-                                            }}>
-                                            <select defaultValue={this.reconcileShelfAssignment(book)}>
-                                                <option value="move">Move to...</option>
-                                                <option value="currentlyReading">Currently Reading</option>
-                                                <option value="wantToRead">Want to Read</option>
-                                                <option value="read">Read</option>
-                                                <option value="none">None</option>
-                                            </select>
-                                        </div>
+                                            <div 
+                                                className="book-shelf-changer" 
+                                                onClick={() => this.props.addToallBooksInPlay(book.id, book)} 
+                                                onChange={e => {
+                                                    this.props.updateShelf(book.id, e.target.value, book);
+                                                    this.props.navigateToHome()
+                                                }}>
+                                                <select defaultValue={this.reconcileShelfAssignment(book)}>
+                                                    <option value="move">Move to...</option>
+                                                    <option value="currentlyReading">Currently Reading</option>
+                                                    <option value="wantToRead">Want to Read</option>
+                                                    <option value="read">Read</option>
+                                                    <option value="none">None</option>
+                                                </select>
+                                            </div>
                                         )}
                                     </div>
                                     {book.id === 0 ? (
-                                    <div className="book-title" id="no-results">{book.title}</div>
+                                        <div className="book-title" id="no-results">{book.title}</div>
                                     ) : ( 
-                                    <div className="book-title">{book.title}</div>
+                                        <div className="book-title">{book.title}</div>
                                     )}
                                     {book.authors !== undefined && (
-                                    <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
+                                        <div className="book-authors">{book.authors.map((author) => (<span key={author}>{author} </span>))}</div>
                                     )}
                                     </div>
                                 </li>

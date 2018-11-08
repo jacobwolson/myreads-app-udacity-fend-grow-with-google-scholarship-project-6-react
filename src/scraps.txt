@@ -157,6 +157,9 @@ ListBooks component scraps
 
 
 
+
+
+
 ---------------------------------------------------------------------------
 
 App component scraps
@@ -172,3 +175,94 @@ function enableSelect () {
   }
 
   window.addEventListener('load', enableSelect())
+
+
+
+    let currentlyReading = books.filter(book => book.shelf === "currentlyReading")
+      let wantToRead = books.filter(book => book.shelf === "wantToRead")
+      let read = books.filter(book => book.shelf === "read")
+
+   this.setState({currentlyReading})
+      this.setState({wantToRead})
+      this.setState({read})
+
+
+-------
+
+ - pushing new data on to state array: answer by Ginden; https://stackoverflow.com/a/37435764
+     - using computed property names when setting state: answer by trad; https://stackoverflow.com/a/29281499 
+     - using filter to remove data from state array: 
+          answer by ephrion; https://stackoverflow.com/a/31838774,
+          entry 'Array.prototype.filter' at MDN; 
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+     - using dynamic key value when setting state: answer by Aaron; https://stackoverflow.com/a/46016573
+     - checking if array includes certain object: answer by AlonL; https://stackoverflow.com/a/27819913 */
+
+
+
+-------
+
+
+// let shelfToMoveFrom;
+    // let stateToRemoveFrom;
+
+    // if (bookToMove[0].shelf !== undefined) {
+    //   shelfToMoveFrom = bookToMove[0].shelf
+    // }
+
+    // stateToRemoveFrom = this.state[shelfToMoveFrom]
+
+    // if (newShelf === 'currentlyReading') {
+    //   let checkForExisting = this.state.currentlyReading.filter(book => book.id === bookID)
+    //   if (checkForExisting.length === 0) {
+    //     if (shelfToMoveFrom !== undefined) {
+    //       this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+    //     }
+    //     bookToMove[0].shelf = 'currentlyReading'
+    //     this.setState({currentlyReading: this.state.currentlyReading.concat(bookToMove)})
+    //   }
+    // } else if (newShelf === 'wantToRead') {
+    //     let checkForExisting = this.state.wantToRead.filter(book => book.id === bookID)
+    //     if (checkForExisting.length === 0) {
+    //       if (shelfToMoveFrom !== undefined) {
+    //         this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+    //       }
+    //       bookToMove[0].shelf = 'wantToRead'
+    //       this.setState({wantToRead: this.state.wantToRead.concat(bookToMove)})
+    //     }
+    // } else if (newShelf === 'read') {
+    //     let checkForExisting = this.state.read.filter(book => book.id === bookID)
+    //     if (checkForExisting.length === 0) {
+    //       if (shelfToMoveFrom !== undefined) {
+    //         this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+    //       }
+    //       bookToMove[0].shelf = 'read'
+    //       this.setState({read: this.state.read.concat(bookToMove)})
+    //     }
+    // } else if (newShelf === 'none') {
+    //     let checkForExisting = this.state.allBooksInPlay.filter(book => book.id === bookID)
+    //     if (shelfToMoveFrom !== undefined) {
+    //       this.setState({[shelfToMoveFrom] : stateToRemoveFrom.filter(book => book.id !== bookID)})
+    //     }
+    //     bookToMove[0].shelf = 'none'
+    //     if (checkForExisting.length === 0) {
+    //       this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(bookToMove)})
+    //     }  
+    // }
+
+    -------
+
+        currentlyReading: [],
+    wantToRead: [],
+    read: []
+
+--------
+
+currentlyReading={this.state.currentlyReading}
+              wantToRead={this.state.wantToRead}
+              read={this.state.read}
+
+              let bookToMove = this.state.allBooksInPlay.filter(book => book.id === bookID)
+
+
+

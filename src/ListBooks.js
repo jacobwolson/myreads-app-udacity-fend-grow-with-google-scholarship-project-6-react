@@ -6,7 +6,7 @@ class ListBooks extends Component {
     
     render() {
         
-        const { currentlyReading, wantToRead, read } = this.props
+        const { allBooksInPlay, currentlyReading, wantToRead, read } = this.props
 
         return (
             <div className="list-books">
@@ -22,7 +22,7 @@ class ListBooks extends Component {
                     <h2 className="bookshelf-title">Currently Reading</h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
-                            {currentlyReading.map((book) => (
+                            {allBooksInPlay.filter(book => book.shelf === 'currentlyReading').map((book) => (
                                 <li key={book.title} className="currently-reading-list-item">
                                     <div className="book">
                                     <div className="book-top">
@@ -60,7 +60,7 @@ class ListBooks extends Component {
                     <h2 className="bookshelf-title">Want to Read</h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
-                            {wantToRead.map((book) => (
+                            {allBooksInPlay.filter(book => book.shelf === 'wantToRead').map((book) => (
                                 <li key={book.title} className="want-to-read-list-item">
                                     <div className="book">
                                     <div className="book-top">
@@ -96,7 +96,7 @@ class ListBooks extends Component {
                     <h2 className="bookshelf-title">Have Read</h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
-                            {read.map((book) => (
+                            {allBooksInPlay.filter(book => book.shelf === 'currentlyReading').map((book) => (
                                 <li key={book.title} className="have-read-list-item">
                                     <div className="book">
                                     <div className="book-top">
