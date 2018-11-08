@@ -87,12 +87,6 @@ class Search extends Component {
                                         {book.id !== 0 && (
                                             <div 
                                                 className="book-shelf-changer" 
-                                                /* Technique for conditionally adding attribute from answer by Arman Yeghiazaryan; 
-                                                    https://stackoverflow.com/a/35428331 */
-                                                // {...(this.props.allBooksInPlay.filter(eachBook => eachBook.id === book.id).length === 0 ? 
-                                                //     { onClick: () => this.props.addToallBooksInPlay(book) } : 
-                                                //     {})
-                                                // }
                                                 onChange={e => {
                                                     this.props.updateShelf(e.target.value, book)
                                                     this.props.navigateToHome()
