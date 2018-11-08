@@ -24,12 +24,12 @@ class App extends Component {
     have a shelf property set and will display in both the listBooks component and in search results. In 
     this case, run the `if` statemtent. Otherwise, if book in question does not have an existing shelf property, 
     which means it will only currently be displaying as a search result, run the else statement. */
-    if (this.state.allBooksInPlay.filter(saidBook => saidBook.id === book.id) !== 0) { 
-      const findBookToMove = saidBook => saidBook.id === book.id
+    if (this.state.allBooksInPlay.filter(eachBook => eachBook.id === book.id) !== 0) { 
+      const findBookToMove = eachBook => eachBook.id === book.id
       const indexOfBookToMove = this.state.allBooksInPlay.findIndex(findBookToMove)
-      const updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(saidBook => saidBook.id === book.id ? saidBook = book : saidBook = saidBook)
+      const updatedAllBooksInPlayArray = this.state.allBooksInPlay.map(eachBook => eachBook.id === book.id ? eachBook = book : eachBook = eachBook)
       
-      // Update the shelf property on the selected book
+      // Update the shelf property on the selected book 
       book.shelf = newShelf
       
       this.setState({allBooksInPlay: updatedAllBooksInPlayArray})
@@ -37,8 +37,8 @@ class App extends Component {
       this.setState({allBooksInPlay: this.state.allBooksInPlay.concat(book)})
     }
     
-    /* Update API with newly shelved book so that if we refresh and make new `BooksAPI.getAll()` call, 
-    app will still be in same state */
+    /* Update API with newly shelved book so that if we refresh or for whatever reason make new 
+    `BooksAPI.getAll()` call, app will still be in same state */
     BooksAPI.update(book, newShelf)
   }
 
