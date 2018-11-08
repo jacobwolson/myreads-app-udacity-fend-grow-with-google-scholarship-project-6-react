@@ -24,7 +24,7 @@ class Search extends Component {
         }
     }
 
-    reconcileShelfAssignment = (thisBook) => {
+    setShelfSelection = (thisBook) => {
         let bookHasShelf
         bookHasShelf = this.props.allBooksInPlay.filter(eachBook => eachBook.id === thisBook.id)
         if (bookHasShelf[0] === undefined) {
@@ -91,7 +91,7 @@ class Search extends Component {
                                                     this.props.updateShelf(e.target.value, book)
                                                     this.props.navigateToHome()
                                                 }}>
-                                                <select defaultValue={this.reconcileShelfAssignment(book)}>
+                                                <select defaultValue={this.setShelfSelection(book)}>
                                                     <option value="move">Move to...</option>
                                                     <option value="currentlyReading">Currently Reading</option>
                                                     <option value="wantToRead">Want to Read</option>
