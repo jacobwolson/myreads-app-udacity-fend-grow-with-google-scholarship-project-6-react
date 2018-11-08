@@ -39,7 +39,7 @@ class App extends Component {
           render={() => (
             <ListBooks
               allBooksInPlay={this.state.allBooksInPlay}
-              changeShelf={this.updateShelf}
+              updateShelf={this.updateShelf}
             />
           )}
         />
@@ -48,8 +48,6 @@ class App extends Component {
           render={( {history} ) => (
             <Search
               allBooksInPlay={this.state.allBooksInPlay}
-              searchResults={this.state.searchResults}
-              addToallBooksInPlay={this.addToallBooksInPlay}
               updateShelf={this.updateShelf}
               /* Consulted: "Programmatically navigate with React Router" by Tyler McGinnis: 
                 https://tylermcginnis.com/react-router-programmatically-navigate/ */
