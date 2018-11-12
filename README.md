@@ -48,9 +48,9 @@ When you change a book's shelf on the search page, you will be redirected to the
 
 3. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
 
-## Details on the starter template as provided by Udacity. See the respository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter). 
+## Details on the starter template as provided by Udacity. See the repository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter). 
 
-### Blockquoted material below from the README for the starter template respository.
+### Blockquoted material below from the README for the starter template repository.
 
 
         ## What You're Getting
