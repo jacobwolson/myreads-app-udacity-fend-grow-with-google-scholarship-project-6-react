@@ -1,3 +1,31 @@
+# MyBooks App | Udacity FEND | 2018
+
+Project six of seven for Udacity's Front End Web Developer Nanodegree; completed as part of the Grow with Google Scholarship program, 2018.
+
+## Authors
+
+I -- Jacob W. Olson -- used React to implement this app's functionality. A starter template that included an HTML example of the markup, most of the CSS stylings, the API calls, and other material, was provided by Udacity. A detailed description of the code provided by Udacity is below.
+
+My contributions include creating the `Search.js` file and much or most of the functional code found in the `ListBooks.js` and `App.js` files. I also added the text displayed, along with its styles, when no book is found in the search component, and replaced the favicon. 
+
+## Using this Code to Get the App Up and Running
+
+1. Create a local directory on your machine and clone the repository to it. For help with this step, see [this tutorial from GitHub](https://help.github.com/articles/cloning-a-repository/ "GitHub Help — Clone a Repository").
+
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.

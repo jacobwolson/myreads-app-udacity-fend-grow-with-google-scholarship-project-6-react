@@ -4,7 +4,7 @@ import * as BooksAPI from './BooksAPI'
 import sortBy from 'sort-by'
 
 class Search extends Component {
-
+    
     state = {
         searchResults: []
     }
@@ -25,8 +25,7 @@ class Search extends Component {
     }
 
     setShelfSelection = (thisBook) => {
-        let bookHasShelf
-        bookHasShelf = this.props.allBooksInPlay.filter(eachBook => eachBook.id === thisBook.id)
+        let bookHasShelf = this.props.allBooksInPlay.filter(eachBook => eachBook.id === thisBook.id)
         if (bookHasShelf[0] === undefined) {
             return "none"
         } else {
@@ -35,7 +34,6 @@ class Search extends Component {
     }
 
     render () {
-    
         if (this.state.searchResults > 1) {
             this.state.searchResults.sort(sortBy('title'))
         }
