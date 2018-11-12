@@ -40,11 +40,11 @@ My contributions include creating the `Search.js` file and much or most of the f
         
         * When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
 
-        6. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
+6. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
 
 ##Details on the starter template as provided by Udacity. See the respository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter). 
 
-    ###Blockquoted material below from the README for the starter template respository.
+###Blockquoted material below from the README for the starter template respository.
 
 
         ## What You're Getting
