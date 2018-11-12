@@ -6,7 +6,7 @@ The focus of this project was demonstrating and practicing skills and knowledge 
 <br><br>
 ## Authors
 
-I -- Jacob W. Olson -- used React to implement this app's functionality. A starter template that included the the XML markup, most all of the CSS stylings, the `BooksAPI.js` file with its content and methods, and other material, was provided by Udacity. 
+I — Jacob W. Olson — used React to implement this app's functionality. A starter template that included the the XML markup, most all of the CSS stylings, the `BooksAPI.js` file with its content and methods, and other material, was provided by Udacity. 
 
 A detailed description of the code provided by Udacity is below,in the block-quoted material copied over from the README provided with the starter template.
 
@@ -35,40 +35,44 @@ My contributions include seperating out the XML for the ListBooks and Search com
 1. On the home page, you will see a default set of books loaded to their specified shelves. Select the downward arrow icon next to any book to access a menu that allows you to change the book's shelf. When you select a new shelf, [the app's state will change](https://reactjs.org/docs/faq-state.html "'Component State' entry at reacjs.org") and the app will re-render, and the book will move to the newly selected shelf. 
 
 
-If "none" is selected, the book will dissapear from the home page completely, but will still be seachable ...
+    * If "none" is selected, the book will dissapear from the home page completely, but will still be seachable ...
 
 2. Select the plus-sign icon in the bottom right-hand corner of the page to navigate to ".../search," a page displaying a component that will allow you to search the API for new books to add your shelves.
 
-Enter some text in to the text field and a list of matching books with matching titles or authors will appear. Change the shelf option on any of these books to add them to one of your shelves. Books that are already assigned to a shelf will also appear in search results -- if you open an already selected-book's search menu, you will see that it's current shelf will match the selected value in the books shelf menu. 
+    * Enter some text in to the text field and a list of matching books with matching titles or authors will appear. Change the shelf option on any of these books to add them to one of your shelves. Books that are already assigned to a shelf will also appear in search results -- if you open an already selected-book's search menu, you will see that it's current shelf will match the selected value in the books shelf menu. 
 
+    * Changing any book's shelf assignment on the search page will update its shelf placement on the home page.
 
-Changing any book's shelf assignment on the search page will update its shelf placement on the home page.
-
-When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
+    * When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
 
 3. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
 <br><br>
 ## Acknowledgements
 
-My work on this project was heavily influenced by an example included in the "Building With React" section of Udacity's Front-End Web Developer course as accessed in the fall of 2018. Other sources for my code are:
+* My work on this project was heavily influenced by an example included in the "Building With React" section of Udacity's Front-End Web Developer course as accessed in the fall of 2018. Other sources for my code are:
 
 
 ### In `App.js`:
 
-Use of ternary operator to dynamially edit an array utilizing the `.map()` method inspired by a StackOverflow answer posted by "S. Kiers" on Feb. 15, 2017: https://stackoverflow.com/a/42259885.
-In addition to the example and lessons provided by Udacity, my implemenation of `react-router-dom`, and my usage of the `.push()` method on the history object for navigation in particular, was influeced by the article "Programmatically navigate with React Router" posted by Tyler McGinnis on Jan. 25, 2018: https://tylermcginnis.com/react-router-programmatically-navigate/.
+* Use of ternary operator to dynamially edit an array utilizing the `.map()` method inspired by a StackOverflow answer posted by "S. Kiers" on Feb. 15, 2017: https://stackoverflow.com/a/42259885.
+
+* In addition to the example and lessons provided by Udacity, my implemenation of `react-router-dom`, and my usage of the `.push()` method on the history object for navigation in particular, was influeced by the article "Programmatically navigate with React Router" posted by Tyler McGinnis on Jan. 25, 2018: https://tylermcginnis.com/react-router-programmatically-navigate/.
 
 ### In `ListBooks.js`
 
-My technique for setting state based on a change in the value of the `select` tag was inspired by a StackOverflow answer by "jmac" posted on Dec. 19, 2016: https://stackoverflow.com/a/41229938.
+* My technique for setting state based on a change in the value of the `select` tag was inspired by a StackOverflow answer by "jmac" posted on Dec. 19, 2016: https://stackoverflow.com/a/41229938.
 
 ### In `Search.js`
 
-My technique for preventing the engine from expecting an object literal by wrapping functional call in an object literal was inspired by a StackOverflow answer posted by "nem35" on June 30, 2017: https://stackoverflow.com/a/44849764.
+* My technique for preventing the engine from expecting an object literal by wrapping functional call in an object literal was inspired by a StackOverflow answer posted by "nem35" on June 30, 2017: https://stackoverflow.com/a/44849764.
+
+### In `README.md`
+
+* This README was based on a template by Billie Thompson posted as a gist under the username "PurpleBooth." The Github repository "Awesome README" by Matias Singers posting under the username "matiassingers" was also consulted.
 
 ### General
 
-[MDN Web Docs](https://developer.mozilla.org/en-US/) and [w3schools.com](https://www.w3schools.com/) were accessed for general reference around various concepts and methods.
+*[MDN Web Docs](https://developer.mozilla.org/en-US/) and [w3schools.com](https://www.w3schools.com/) were accessed for general reference around various concepts and methods.
 
 ### Details on the starter template provided by Udacity. See the repository for the starter template [here.](https://github.com/udacity/reactnd-project-myreads-starter)
 
