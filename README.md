@@ -12,7 +12,7 @@ A detailed description of the code provided by Udacity is below,in the block-quo
 
 My contributions include creating the `Search.js` file and much or most of the functional code found in the `ListBooks.js` and `App.js` files. I also added the text displayed, along with its styles, when no book is found in the search component.
 
-## Using this Code to Get the App Up and Running
+## Getting the App Up and Running
 
 1. Create a local directory on your machine and clone the repository to it. For help with this step, see [this tutorial from GitHub](https://help.github.com/articles/cloning-a-repository/ "GitHub Help — Clone a Repository").
 
@@ -30,21 +30,27 @@ My contributions include creating the `Search.js` file and much or most of the f
 
 5. You should now be able to check out the app and it's features!
 
-    * On the home page, you will see a default set of books loaded to their specified shelves. Select the downward arrow icon next to any book to access a menu that allows you to change the book's shelf. When you select a new shelf, [the app's state will change](https://reactjs.org/docs/faq-state.html "'Component State' entry at reacjs.org") and the app will re-render, and the book will move to the newly selected shelf. If "none" is selected, the book will dissapear from the home page completely, but will still be seachable ...
+## Using the App
 
-    * Select the plus-sign icon in the bottom right-hand corner of the page to navigate to ".../search," a page displaying a component that will allow you to search the API for new books to add you shelves.
+1. On the home page, you will see a default set of books loaded to their specified shelves. Select the downward arrow icon next to any book to access a menu that allows you to change the book's shelf. When you select a new shelf, [the app's state will change](https://reactjs.org/docs/faq-state.html "'Component State' entry at reacjs.org") and the app will re-render, and the book will move to the newly selected shelf. 
 
-        * Enter some text in to the text field and a list of matching books with matching titles or authors will appear. Change the shelf option on any of these books to add them to one of your shelves. Books that are already assigned to a shelf will also appear in search results -- if you open an already selected-book's search menu, you will see that it's current shelf will match the selected value in the books shelf menu. 
-        
-        * Changing any book's shelf assignment on the search page will update its shelf placement on the home page.
-        
-        * When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
 
-6. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
+If "none" is selected, the book will dissapear from the home page completely, but will still be seachable ...
 
-##Details on the starter template as provided by Udacity. See the respository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter). 
+2. Select the plus-sign icon in the bottom right-hand corner of the page to navigate to ".../search," a page displaying a component that will allow you to search the API for new books to add your shelves.
 
-###Blockquoted material below from the README for the starter template respository.
+Enter some text in to the text field and a list of matching books with matching titles or authors will appear. Change the shelf option on any of these books to add them to one of your shelves. Books that are already assigned to a shelf will also appear in search results -- if you open an already selected-book's search menu, you will see that it's current shelf will match the selected value in the books shelf menu. 
+
+
+Changing any book's shelf assignment on the search page will update its shelf placement on the home page.
+
+When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
+
+3. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
+
+## Details on the starter template as provided by Udacity. See the respository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter). 
+
+### Blockquoted material below from the README for the starter template respository.
 
 
         ## What You're Getting
