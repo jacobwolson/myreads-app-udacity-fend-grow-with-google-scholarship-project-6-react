@@ -3,7 +3,7 @@
 Project six of seven for Udacity's Front End Web Developer Nanodegree; completed as part of the Grow with Google Scholarship program, 2018.
 
 The focus of this project was demonstrating and practicing skills and knowledge around the fundamentals of using React to develop for the Web.
-
+<br><br>
 ## Authors
 
 I -- Jacob W. Olson -- used React to implement this app's functionality. A starter template that included the the XML markup, most all of the CSS stylings, the `BooksAPI.js` file with its content and methods, and other material, was provided by Udacity. 
@@ -11,7 +11,7 @@ I -- Jacob W. Olson -- used React to implement this app's functionality. A start
 A detailed description of the code provided by Udacity is below,in the block-quoted material copied over from the README provided with the starter template.
 
 My contributions include seperating out the XML for the ListBooks and Search components, creating these components and putting them in the `ListBooks.js` and `Search.js` files respectively; editing `App.js` and adding all state, props and methods the application's components to turn a static page in to a functional web app. In the course of doing so, I imported `react-router-dom` in to the app and implemented its functionality displayed, and imported `sortby` and likewise implemented its functionality displayed. I also added the text -- along with its styles -- that displays when no book is found in the search component.
-
+<br><br>
 ## Getting the App Up and Running
 
 1. Create a local directory on your machine and clone the repository to it. For help with this step, see [this tutorial from GitHub](https://help.github.com/articles/cloning-a-repository/ "GitHub Help — Clone a Repository").
@@ -29,7 +29,7 @@ My contributions include seperating out the XML for the ListBooks and Search com
     * Enter `npm start` on the command line. After a short time, a browser window with the URL "https:localhost:3000" should open, displaying the app. You can navigate to this URL as well.
 
 5. You should now be able to check out the app and it's features!
-
+<br><br>
 ## Using the App
 
 1. On the home page, you will see a default set of books loaded to their specified shelves. Select the downward arrow icon next to any book to access a menu that allows you to change the book's shelf. When you select a new shelf, [the app's state will change](https://reactjs.org/docs/faq-state.html "'Component State' entry at reacjs.org") and the app will re-render, and the book will move to the newly selected shelf. 
@@ -47,13 +47,13 @@ Changing any book's shelf assignment on the search page will update its shelf pl
 When you change a book's shelf on the search page, you will be redirected to the home page, where you will see the newly selected, or freshly moved, book on the appropriate shelf, or will you will no longer see the book in question if its shelf value was changed to "none."
 
 3. That's the app! Thanks for taking a look. Check out the code to see how it works. And always, comments, feedback, questions and requests to collaborate are more than welcome!
-
-## Awknowledgements
+<br><br>
+## Acknowledgements
 
 My work on this project was heavily influenced by an example included in the "Building With React" section of Udacity's Front-End Web Developer course as accessed in the fall of 2018. Other sources for my code are:
 
 
-###In `App.js`:
+### In `App.js`:
 
 Use of ternary operator to dynamially edit an array utilizing the `.map()` method inspired by a StackOverflow answer posted by "S. Kiers" on Feb. 15, 2017: https://stackoverflow.com/a/42259885.
 In addition to the example and lessons provided by Udacity, my implemenation of `react-router-dom`, and my usage of the `.push()` method on the history object for navigation in particular, was influeced by the article "Programmatically navigate with React Router" posted by Tyler McGinnis on Jan. 25, 2018: https://tylermcginnis.com/react-router-programmatically-navigate/.
@@ -66,13 +66,13 @@ My technique for setting state based on a change in the value of the `select` ta
 
 My technique for preventing the engine from expecting an object literal by wrapping functional call in an object literal was inspired by a StackOverflow answer posted by "nem35" on June 30, 2017: https://stackoverflow.com/a/44849764.
 
-## General
+### General
 
 [MDN Web Docs](https://developer.mozilla.org/en-US/) and [w3schools.com](https://www.w3schools.com/) were accessed for general reference around various concepts and methods.
 
-## Details on the starter template provided by Udacity. See the repository for the starter template [here](https://github.com/udacity/reactnd-project-myreads-starter).
+### Details on the starter template provided by Udacity. See the repository for the starter template [here.](https://github.com/udacity/reactnd-project-myreads-starter)
 
-### Blockquoted material below from the README for the starter template repository.
+#### Blockquoted material below from the README for the starter template repository.
 
 
         ## What You're Getting
@@ -149,7 +149,7 @@ My technique for preventing the engine from expecting an object literal by wrapp
 
         This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-
+<br><br><br>
 Thanks again!
 Jacob W. Olson
 2018
