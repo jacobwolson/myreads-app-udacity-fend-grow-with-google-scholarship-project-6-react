@@ -2,18 +2,37 @@
 
 Project six of seven for Udacity's Front End Web Developer Nanodegree; completed as part of the Grow with Google Scholarship program, 2018.
 
+The focus of this project was demonstrating and practicing skills and knowledge around the fundamentals of using React to develop for the Web.
+
 ## Authors
 
-I -- Jacob W. Olson -- used React to implement this app's functionality. A starter template that included an HTML example of the markup, most of the CSS stylings, the API calls, and other material, was provided by Udacity. A detailed description of the code provided by Udacity is below.
+I -- Jacob W. Olson -- used React to implement this app's functionality. A starter template that included an HTML example of the markup, most all of the CSS stylings, the `BooksAPI.js` file with its content and methods, and other material, was provided by Udacity. 
 
-My contributions include creating the `Search.js` file and much or most of the functional code found in the `ListBooks.js` and `App.js` files. I also added the text displayed, along with its styles, when no book is found in the search component, and replaced the favicon. 
+A detailed description of the code provided by Udacity is below,in the block-quoted material copied over from the README provided with the starter template.
+
+My contributions include creating the `Search.js` file and much or most of the functional code found in the `ListBooks.js` and `App.js` files. I also added the text displayed, along with its styles, when no book is found in the search component.
 
 ## Using this Code to Get the App Up and Running
 
 1. Create a local directory on your machine and clone the repository to it. For help with this step, see [this tutorial from GitHub](https://help.github.com/articles/cloning-a-repository/ "GitHub Help — Clone a Repository").
 
-2. 
+2. Make sure you have node.js and npm installed. 
+    * To check for node.js, open a console and enter "node -v" in the command line. If node is installed, a version number should be returned: e.g., "v8.11.3." 
+    * To check for npm, enter "npm -v." If npm is installed, you should likewise see a version number returned -- e.g., "6.4.1."
+    * If you do not have node or npm installed, follow [these instructions from Dave McFarland at Treehouse](https://blog.teamtreehouse.com/install-node-js-npm-windows "How to Install Node.js® and NPM on Windows" by Dave McFarland).
+    * To learn more about node.js and npm, you may wish to check out the linked article from Treehouse above, see [this article by Priyash Patel on freeCodeCamp's blog](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5 ""What exactly is Node.js?" by Priyesh Patel"), take a look around [the node.js website](https://node.js.org/en/ "Node.js website). or search for any number of other great resources for learning out there. 
 
+3. With node.js and npm installed, you'll next want to install the application's dependencies. 
+    * Run `npm install` on the command line, and wait for the intallation process to complete.
+
+4. Next, fire up the development server.
+    * Enter `npm start` on the command line. After a short time, a browser window with the URL "https:localhost:3000" should open, displaying the app. You can navigate to this URL as well.
+
+5. You should now be able to check out the app and it's features!
+
+    * On the home page, you will see a default set of books loaded to their specified shelves. Click the "+" icon next to any book to access a menu that allows you to change the book's shelf. When you select a new shelf, the app's state will change and the app will re-render, and the book will move to the newly selected shelf. Or it will dissapear from the home page if "none" is selected.
+
+    * 
 
 
 
