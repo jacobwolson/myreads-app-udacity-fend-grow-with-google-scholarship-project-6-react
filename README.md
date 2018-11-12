@@ -1,6 +1,6 @@
 # MyBooks App | Udacity FEND | 2018
 
-Project six of seven for Udacity's Front End Web Developer Nanodegree; completed as part of the Grow with Google Scholarship program, 2018.
+Project 6 for Udacity's Front End Web Developer Nanodegree; completed as part of the Grow with Google Scholarship program, 2018.
 
 The focus of this project was demonstrating and practicing skills and knowledge around the fundamentals of using React to develop for the Web.
 <br><br>
